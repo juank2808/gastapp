@@ -1,0 +1,32 @@
+version: '3.1'
+ 
+services:
+  db:
+    image: mysql:8.0.11
+    container_name: db
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gastapp
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      UPLOAD_LIMIT: 6666666M
+    ports:
+      - "6033:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+      UPLOAD_LIMIT: 6666666M
+    restart: always
+    ports:
+      - 8081:80
+volumes:
+  dbdata:
