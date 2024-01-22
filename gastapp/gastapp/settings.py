@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,8 +74,8 @@ WSGI_APPLICATION = 'gastapp.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# CONEXION
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
